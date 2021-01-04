@@ -5,8 +5,8 @@ orbs:
 
 workflows:      
   - docker/publish:
-    image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
-    tag: 'latest'  
+      image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
+      tag: 'latest'  
   
   heroku_deploy:
       jobs:        
