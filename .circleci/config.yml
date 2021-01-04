@@ -9,10 +9,14 @@ workflows:
       - docker/publish:
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'  
-          
+  
   heroku_deploy:
-    jobs:
-      - heroku/deploy-via-git:
-           filters:
-             branches:
-               only: main # only run deploy-via-git job on master branch
+      jobs:
+        - heroku/push-docker-image
+          
+  #heroku_deploy:
+   # jobs:
+    #  - heroku/deploy-via-git:
+     #      filters:
+      #       branches:
+       #        only: main # only run deploy-via-git job on master branch
