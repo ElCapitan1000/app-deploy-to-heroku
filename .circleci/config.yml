@@ -1,17 +1,12 @@
-jobs:
-  build:
-    steps:
-      - setup_remote_docker:
-        version: 19.03.13
-        
 version: 2.1
 orbs:
     docker: circleci/docker@1.0.0
-    heroku: circleci/heroku@1.2.2
+    heroku: circleci/heroku@1.2.2      
 
-workflows:
+workflows:      
   deploy:
     jobs:
+      - setup_remote_docker
       - docker/publish:
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'  
