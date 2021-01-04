@@ -1,18 +1,18 @@
 version: 2.1
 orbs:
     docker: circleci/docker@1.0.0
-    heroku: circleci/heroku@1.2.2      
+    heroku: circleci/heroku@1.2.2
 
-workflows:     
+workflows:           
   deploy:
     jobs:
-      - docker/publish:
-        image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
-        tag: 'latest'  
+      - docker/publish:         
+          image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
+          tag: 'latest'
+      - setup_remote_docker  
   
   heroku_deploy:
-      jobs:        
-        - setup_remote_docker
+      jobs:     
         - heroku/push-docker-image
           
   #heroku_deploy:
