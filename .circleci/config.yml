@@ -3,9 +3,7 @@ jobs:
   build:
     machine: true
     
-    -steps:
+    working_directory: ~/app-to-deploy-to-heroku
+    
+    steps:
       - checkout
-      
-      - run:
-        name: -build docker image
-        command: docker build -t apptodeploy .
