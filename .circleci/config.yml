@@ -2,8 +2,8 @@ version: 2.1
 orbs:
     heroku: circleci/heroku@1.2.2
 
-  workflows:
-    heroku_deploy:
-      jobs:
-        - heroku/push-docker-image:
-            app-name: 'app-deploy-to-heroku'
+workflows:
+  heroku_deploy:
+    jobs:
+      - heroku/push-docker-image:
+          app-name: 'app-deploy-to-heroku'
