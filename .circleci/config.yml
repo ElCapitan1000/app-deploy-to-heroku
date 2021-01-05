@@ -1,14 +1,9 @@
 version: 2.1
+orbs:
+    heroku: circleci/heroku@1.2.2
 
-machine:
-  services:
-    - docker
-
-deployment:
-  production:
-    branch: main
-    commands:
-      - docker build -t app-deploy-to-heroku .
-      #- docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
-      #- docker tag  app-deploy-to-heroku:latest registry.heroku.com/app-deploy-to-heroku/web
-      #- docker push registry.heroku.com/app-deploy-to-heroku/web
+  workflows:
+    heroku_deploy:
+      jobs:
+        - heroku/push-docker-image:
+            app-name: 'app-deploy-to-heroku'
