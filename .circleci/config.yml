@@ -7,7 +7,8 @@ jobs:
     working_directory: ~/app-to-deploy-to-heroku
     
     steps:
-      - checkout
+      - setup_remote_docker:
+        version: 19.03.13
       
 orbs:
     heroku: circleci/heroku@1.2.2
