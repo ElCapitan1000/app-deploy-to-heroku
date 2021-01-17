@@ -5,15 +5,7 @@ orbs:
 
 jobs:
   build:
-    machine: true
-      #image: ubuntu-2004:202010-01
-      #pre:
-        #- curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-      #services:
-        #- docker
-        
-    #steps:
-      #- setup_remote_docker
+    machine: true                  
       
 workflows:
   heroku_deploy:
