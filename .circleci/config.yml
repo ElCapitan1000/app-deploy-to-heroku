@@ -9,6 +9,16 @@ jobs:
      # with credentials stored in the UI
      - run: |
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+ deploy:
+   executor: heroku/default
+   steps:
+     - checkout
+     - heroku/install
+     - run:
+         command: >
+           echo "The command above installs Heroku, the command below deploys.
+           What you do inbetween is up to you!"
+     - heroku/deploy-via-git         
 
 orbs:
   docker: circleci/docker@1.0.0
@@ -22,5 +32,6 @@ workflows:
           tag: 'latest'
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git
+      - deploy
+      #- heroku/deploy-via-git
       #- heroku/push-docker-image
