@@ -1,15 +1,15 @@
 version: 2.1
 
 jobs:
-  build:
-    machine: true
-      steps:
-        - checkout
-       # start proprietary DB using private Docker image
-       # with credentials stored in the UI
-       - run: |
-           echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin   
-           
+ build:
+   machine: true
+   steps:
+     - checkout
+     # start proprietary DB using private Docker image
+     # with credentials stored in the UI
+     - run: |
+         echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+
 orbs:
   docker: circleci/docker@1.0.0
   heroku: circleci/heroku@1.2.4
