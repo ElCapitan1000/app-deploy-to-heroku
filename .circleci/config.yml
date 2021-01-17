@@ -22,4 +22,5 @@ workflows:
           tag: 'latest'
   heroku_deploy:
     jobs:
-      - heroku/push-docker-image
+      - heroku/deploy-via-git
+      #- heroku/push-docker-image
