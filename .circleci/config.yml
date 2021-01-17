@@ -14,6 +14,7 @@ jobs:
    steps:
      - checkout
      - heroku/install
+     - heroku/check-authentication
      - run:
          command: >
            echo "The command above installs Heroku, the command below deploys.
