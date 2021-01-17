@@ -9,6 +9,7 @@ jobs:
      # with credentials stored in the UI
      - run: |
          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+         docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
  deploy:
    executor: heroku/default
    steps:
