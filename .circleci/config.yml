@@ -26,7 +26,8 @@ jobs:
      #- run:
          #heroku auth:token    
      #- heroku/deploy-via-git  
-     - systemctl start docker
+     - run:
+        systemctl start docker
      - heroku/push-docker-image
 
 orbs:
