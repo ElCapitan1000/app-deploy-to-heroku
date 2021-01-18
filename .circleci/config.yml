@@ -4,7 +4,7 @@ jobs:
  login:
    steps:
      - run:
-       echo "Do login"
+         echo "Do login"
  build:
    machine: true
    steps:
