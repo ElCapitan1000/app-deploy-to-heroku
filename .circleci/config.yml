@@ -1,47 +1,21 @@
+machine:
+  services:
+    - docker
+
 version: 2.1
-
-jobs:
- login:
-   machine: true
-   steps:
-     - run:
-         echo "test"
- build:
-   machine: true
-   steps:     
-     - run: |       
-         echo "$DOCKER_PASSWORD"  | docker login --username $DOCKER_LOGIN --password-stdin    
-     - run: docker login --username=$DOCKER_LOGIN --password-stdin=$(heroku auth:token) registry.heroku.com
-         
- deploy:
-   executor: heroku/default
-   steps:        
-     - setup_remote_docker:
-         version: 19.03.13 
-     - checkout
-     - heroku/install
-     - heroku/check-authentication   
-     - run:
-         #docker login --username=$DOCKER_LOGIN --password=$(heroku auth:token) registry.heroku.com
-         heroku container:login
-         #heroku auth:token    
-     #- heroku/deploy-via-git       
-     - heroku/push-docker-image
-
 orbs:
   docker: circleci/docker@1.0.0
   heroku: circleci/heroku@1.2.4
 
 workflows:
   deploy:
+    steps:        
+     - setup_remote_docker:
+         version: 19.03.13 
     jobs:
       - docker/publish:
           image: $DOCKER_LOGIN/$CIRCLE_PROJECT_REPONAME
           tag: 'latest'
   heroku_deploy:
     jobs:
-      - login
-      - build
-      - deploy
-      #- heroku/deploy-via-git
-      #- heroku/push-docker-image
+      - heroku/push-docker-image
