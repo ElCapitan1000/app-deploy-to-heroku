@@ -26,7 +26,8 @@ jobs:
      - heroku/install
      - heroku/check-authentication   
      - run:
-         heroku container:login
+         docker login --username=$DOCKER_LOGIN --password=$(heroku auth:token) registry.heroku.com
+         #heroku container:login
          #heroku auth:token    
      #- heroku/deploy-via-git       
      - heroku/push-docker-image
