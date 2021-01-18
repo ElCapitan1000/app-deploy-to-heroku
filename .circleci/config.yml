@@ -23,8 +23,8 @@ jobs:
      - checkout
      - heroku/install
      - heroku/check-authentication   
-     - heroku container:login
-     #- run:
+     - run:
+         - heroku container:login
          #heroku auth:token    
      #- heroku/deploy-via-git  
      - setup_remote_docker:
