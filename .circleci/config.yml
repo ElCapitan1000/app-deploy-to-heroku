@@ -22,7 +22,8 @@ jobs:
    steps:         
      - checkout
      - heroku/install
-     - heroku/check-authentication     
+     - heroku/check-authentication   
+     - heroku container:login
      #- run:
          #heroku auth:token    
      #- heroku/deploy-via-git  
