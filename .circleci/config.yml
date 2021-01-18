@@ -8,14 +8,10 @@ jobs:
          echo "test"
  build:
    machine: true
-   steps:
-     #- checkout
-     # start proprietary DB using private Docker image
-     # with credentials stored in the UI
-     #docker login --username $DOCKER_USER --password-stdin
+   steps:     
      - run: |       
          echo "$DOCKER_PASSWORD"  | docker login --username $DOCKER_LOGIN --password-stdin    
-     - run: docker login --username=$HEROKU_LOGIN --password-stdin=$HEROKU_API_KEY registry.heroku.com           
+     - run: docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
          
  deploy:
    executor: heroku/default
