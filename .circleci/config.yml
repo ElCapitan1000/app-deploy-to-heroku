@@ -23,9 +23,10 @@ jobs:
      - checkout
      - heroku/install
      - heroku/check-authentication     
-     - run:
-         heroku auth:token    
-     - heroku/deploy-via-git         
+     #- run:
+         #heroku auth:token    
+     #- heroku/deploy-via-git   
+     - heroku/push-docker-image
 
 orbs:
   docker: circleci/docker@1.0.0
