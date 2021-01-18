@@ -23,8 +23,8 @@ jobs:
      - checkout
      - heroku/install
      - heroku/check-authentication     
-     #- run:
-         #heroku login     
+     - run:
+         heroku auth:token    
      - heroku/deploy-via-git         
 
 orbs:
