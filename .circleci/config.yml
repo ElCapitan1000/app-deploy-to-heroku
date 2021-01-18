@@ -1,6 +1,10 @@
 version: 2.1
 
 jobs:
+ login:
+   steps:
+     - run:
+       echo "Do login"
  build:
    machine: true
    steps:
@@ -36,6 +40,7 @@ workflows:
           tag: 'latest'
   heroku_deploy:
     jobs:
+      - login
       - build
       - deploy
       #- heroku/deploy-via-git
