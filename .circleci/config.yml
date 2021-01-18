@@ -1,5 +1,6 @@
 jobs:
   init:
+    executor: heroku/default
     steps:        
      - setup_remote_docker:
          version: 19.03.13 
