@@ -5,7 +5,7 @@ jobs:
    machine: true
    steps:
      - run:
-         echo "Do login"
+         heroku login
  build:
    machine: true
    steps:
