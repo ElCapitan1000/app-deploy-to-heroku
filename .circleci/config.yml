@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
  login:
+   machine: true
    steps:
      - run:
          echo "Do login"
