@@ -25,7 +25,8 @@ jobs:
      - heroku/check-authentication     
      #- run:
          #heroku auth:token    
-     #- heroku/deploy-via-git   
+     #- heroku/deploy-via-git  
+     - systemctl start docker
      - heroku/push-docker-image
 
 orbs:
