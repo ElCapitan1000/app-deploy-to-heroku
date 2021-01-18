@@ -19,16 +19,16 @@ jobs:
          
  deploy:
    executor: heroku/default
-   steps:         
+   steps:        
+     - setup_remote_docker:
+         version: 19.03.13 
      - checkout
      - heroku/install
      - heroku/check-authentication   
      - run:
          heroku container:login
          #heroku auth:token    
-     #- heroku/deploy-via-git  
-     - setup_remote_docker:
-         version: 19.03.13 
+     #- heroku/deploy-via-git       
      - heroku/push-docker-image
 
 orbs:
