@@ -28,7 +28,6 @@ jobs:
      #- run:
          #heroku auth:token    
      #- heroku/deploy-via-git  
-     - run:
      - heroku/push-docker-image
 
 orbs:
