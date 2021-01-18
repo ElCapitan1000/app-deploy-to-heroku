@@ -13,9 +13,9 @@ jobs:
      # start proprietary DB using private Docker image
      # with credentials stored in the UI
      #docker login --username $DOCKER_USER --password-stdin
-     #docker login --username=$HEROKU_LOGIN --password-stdin=$HEROKU_API_KEY registry.heroku.com           
-     - run:       
+     - run: |       
          echo "$DOCKER_PASSWORD"  | docker login --username $DOCKER_LOGIN --password-stdin         
+         docker login --username=$HEROKU_LOGIN --password-stdin=$HEROKU_API_KEY registry.heroku.com           
          
  deploy:
    executor: heroku/default
