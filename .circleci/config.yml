@@ -22,12 +22,9 @@ jobs:
    steps:
      - checkout
      - heroku/install
-     - heroku/check-authentication
+     - heroku/check-authentication     
      - run:
-         command: >
-           echo "The command above installs Heroku, the command below deploys.
-           What you do inbetween is up to you!"
-     - heroku login
+         heroku login
      - heroku/deploy-via-git         
 
 orbs:
