@@ -17,4 +17,4 @@ jobs:
 workflows:
   deploy:
     jobs:
-      -deploy-dev                       
+      - deploy-dev                       
