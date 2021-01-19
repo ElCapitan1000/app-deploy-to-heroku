@@ -1,12 +1,20 @@
 version: 2.1
-deploy-dev:
-  machine: true
-  steps:
-    - checkout
-    - run:
-        name: Build and push Docker image to Heroku
-        command: |
-          sudo curl https://cli-assets.heroku.com/install.sh | sh
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a app-deploy-to-heroku web
-          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a app-deploy-to-heroku web
+
+jobs:
+  deploy-dev:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build and push Docker image to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a app-deploy-to-heroku web
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a app-deploy-to-heroku web
+           
+           
+workflows:
+  deploy:
+    jobs:
+      -deploy-dev                       
