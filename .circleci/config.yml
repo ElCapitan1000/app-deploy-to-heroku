@@ -4,9 +4,10 @@ version: 2.1
 workflows:
   heroku_deploy:
     jobs:
+      - heroku/check-authentication:
       - heroku/deploy-via-git:
           post-steps:
             - run: echo "your-database-migration-command"
           pre-steps:
             - run: echo "command-that-run-before-deploying"
-            - run: heroku login
+            #- run: heroku login
