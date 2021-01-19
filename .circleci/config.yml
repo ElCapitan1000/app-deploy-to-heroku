@@ -1,13 +1,12 @@
-orbs:
-  heroku: circleci/heroku@1.2.4
 version: 2.1
-workflows:
-  heroku_deploy:
-    jobs:
-      - heroku/check-authentication:
-      - heroku/deploy-via-git:
-          post-steps:
-            - run: echo "your-database-migration-command"
-          pre-steps:
-            - run: echo "command-that-run-before-deploying"
-            #- run: heroku login
+deploy-dev:
+  machine: true
+  steps:
+    - checkout
+    - run:
+        name: Build and push Docker image to Heroku
+        command: |
+          sudo curl https://cli-assets.heroku.com/install.sh | sh
+          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a app-deploy-to-heroku web
+          HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a app-deploy-to-heroku web
