@@ -9,3 +9,4 @@ workflows:
             - run: echo "your-database-migration-command"
           pre-steps:
             - run: echo "command-that-run-before-deploying"
+            - run: heroku login
