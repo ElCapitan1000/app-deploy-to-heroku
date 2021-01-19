@@ -6,6 +6,6 @@ workflows:
     jobs:
       - heroku/deploy-via-git:
           post-steps:
-            - run: your-database-migration-command
+            - run: "your-database-migration-command"
           pre-steps:
-            - run: command-that-run-before-deploying
+            - run: "command-that-run-before-deploying"
