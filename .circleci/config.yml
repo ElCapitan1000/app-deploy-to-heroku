@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  deploy-dev:
+  deploy-heroku:
     machine: true
     steps:
       - checkout
@@ -17,4 +17,4 @@ jobs:
 workflows:
   deploy:
     jobs:
-      - deploy-dev                       
+      - deploy-heroku
